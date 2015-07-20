@@ -6,11 +6,50 @@
 //System Libraries
 #include <iostream>
 #include <iomanip>
+#include <string>//for letters
+#include <iostream>// using I/O
+#include <iomanip>//for set precision
 using namespace std;
 
 //Global Constants
 
 //Function Prototypes
+string o[]={"","One","Two","Three","Four","Five","Six",
+
+                     "Seven","Eight","Nine","Ten","Eleven",
+
+                     "Twelve","Thirteen","Fourteen","Fifteen",
+
+                     "Sixteen","Seventeen","Eighteen","Nineteen",};
+
+    string t[]={"Twenty","Thirty","Forty","Fifty","Sixty",
+
+                     "Seventy","Eighty","Ninety",};
+
+    string h="Hundred";
+//If the number for the check entered is greater than 999 or less than 1
+    string NUMB(int a){
+
+        if ((a<1)||(a>999))
+        {
+            return "The check value you entered is not between $1 and $999.\n";
+        }
+        else if (a>=100)
+        {
+            int b=a/100;
+            return o[b] + " " + h + " " + NUMB(a - b * 100); 
+        }
+        else if (a >= 20)
+        {
+            int ltdgt = a / 10;
+            int rtdgt = a % 10;
+            return t[ltdgt - 2] + " " + o[rtdgt];
+        }
+        else (a >= 0);{
+            return o[a];
+        }
+    }
+    
 void Menu();
 int getN();
 void def(int);
@@ -238,7 +277,51 @@ void problem2(){
 //Solution to problem 3
 void problem3(){
     cout<<"In problem # 3"<<endl<<endl;
+    //Declare Variables Here
+    string mmddyy;//date for the check
+    string frstNM;//name of the payee  FIRST NAME
+    string lstNM;//name of the payee LAST NAME
+    float dlr;
+    string acctA;//name of the person receiving the check FIRST
+    string acctB;//LAST
+    string city;//CITY AND STATE TO FILL THE CHECK
+    string street;//STREET NAME FOR CHECK
+    int number;//NUMBER FOR CHECK
+    int zip;//ZIP CODE FOR CHECK
+   
+    //Initialize Values
+     cout<<"Fill your check here: .\n";
+     cout<<"Enter date (mm/dd/yy): ";
+     cin>>mmddyy;
+     cout<<"Payee (First, Last): ";
+     cin>>frstNM>>lstNM;
+     cout<<"Enter $ amount of check ($1-$999, no cents): ";
+     cin>>dlr;
+     cout<<"Your Name (First, Last): ";
+     cin>>acctA>>acctB;
+     cout<<"Enter street number and name: "<<endl;
+     cin>>number>>street;
+     cout<<"Enter city, state "<<endl;
+     cin>>city;
+     
+    //Outputs Unknown here
+    cout<<endl;
+    cout<<acctA<<" "<<acctB<<endl;
+    cout<<number<<" "<<street<<endl;
+    cout<<city<<"                                   "<<"Date:"<<mmddyy<<endl;
+    cout<<endl;
+    cout<<fixed<<showpoint<<setprecision(2);
+    cout<<"Pay to the Order of:  "<<frstNM<<" "<<lstNM<<setw(20)<<"$ "<<dlr<<endl;
+    cout<<endl;
+    cout<<NUMB(dlr)<<" and no/100s Dollars\n";
+    cout<<endl;
+    cout<<"BANK OF CSC5\n";
+    cout<<endl;
+    cout<<"FOR:  GOTTA PAY THE RENT                      "<<acctA<<" "<<acctB<<endl;
+   
+
 }
+
 
 //Solution to problem 4
 void problem4(){
@@ -359,6 +442,28 @@ void problem5(){
 //Solution to problem 6
 void problem6(){
     cout<<"In problem # 6"<<endl<<endl;
+    //Declare variables
+        float a;//number chosen by user
+        float b;//number of term entered by the user
+        float c;
+        float d;
+        float e=1.0f;
+
+        //input values here!
+        cout<<"Enter a number here: "<<endl;
+        cin>>a;
+        cout<<"How many terms would you like to calculate?: "<<endl;
+        cin>>b;
+
+        //output unknowns here
+        for (int i=1;i<=b;++i)
+        {
+            a+=(b-i)/(e*=a);
+        }
+
+        d=b+c;
+        cout<<d<<endl;
+        //Exit stage right!
 }
 
 //Exit Comment
